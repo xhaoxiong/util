@@ -10,7 +10,10 @@ package util
 // 	2、将这17位数字和系数相乘的结果相加，用加出来和除以11，得到余数Remainder
 //	3、余数Remainder作为位置值，在数组code中找到对应的值，就是身份证号码的第18位数值
 
-import "strings"
+import (
+	"regexp"
+	"strings"
+)
 
 var (
 	coefficient []int32 = []int32{7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2}
@@ -30,4 +33,10 @@ func Verification(idCardNo string) bool {
 		sum += int32(byte(idByte[i])-byte('0')) * coefficient[i]
 	}
 	return code[sum%11] == idByte[17]
+}
+
+func VerifiyEmail(email string) bool {
+	pattern := `\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*` //匹配电子邮箱
+	reg := regexp.MustCompile(pattern)
+	return reg.MatchString(email)
 }
