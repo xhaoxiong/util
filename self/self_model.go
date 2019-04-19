@@ -7,6 +7,7 @@ package self
 
 import "github.com/xhaoxiong/util"
 
+//用于gorm的基础model
 type Model struct {
 	ID        uint           `gorm:"primary_key" json:"id"`
 	CreatedAt util.JSONTime  `json:"createdAt"`
