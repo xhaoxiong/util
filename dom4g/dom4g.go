@@ -8,7 +8,6 @@
 
 package dom4g
 
-
 import (
 	"encoding/xml"
 	"errors"
@@ -36,19 +35,20 @@ func (a *Attr) Name() string {
 }
 
 type Element struct {
-	head       string
-	space      string
-	name       string
-	Value      string
-	Attrs      []*Attr
-	childs     []E
-	parent     E
-	elementmap map[string][]E
-	attrmap    map[string]string
-	lc         *sync.RWMutex
-	r          E
-	root       E
-	isSync     bool
+	head         string
+	space        string
+	name         string
+	Value        string
+	Attrs        []*Attr
+	childs       []E
+	parent       E
+	elementmap   map[string][]E
+	attrmap      map[string]string
+	lc           *sync.RWMutex
+	r            E
+	root         E
+	isSync       bool
+	NamespaceURI string
 }
 
 func LoadByStream(r io.Reader) (current *Element, err error) {
@@ -75,6 +75,7 @@ func LoadByStream(r io.Reader) (current *Element, err error) {
 			el.lc = new(sync.RWMutex)
 			el.r = el
 			el.isSync = false
+			el.NamespaceURI = token.Name.Space
 			for _, a := range token.Attr {
 				ar := new(Attr)
 				ar.space = space(a.Name.Space)
