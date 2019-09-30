@@ -65,7 +65,7 @@ func LoadByStream(r io.Reader) (current *Element, err error) {
 	for t, er := decoder.Token(); er == nil; t, er = decoder.Token() {
 		switch token := t.(type) {
 		case xml.StartElement:
-			el := new(Element)
+			el := &Element{}
 			el.space = space(token.Name.Space)
 			el.name = token.Name.Local
 			el.Attrs = make([]*Attr, 0)
@@ -75,7 +75,6 @@ func LoadByStream(r io.Reader) (current *Element, err error) {
 			el.lc = new(sync.RWMutex)
 			el.r = el
 			el.isSync = false
-			el.NamespaceURI = token.Name.Space
 			for _, a := range token.Attr {
 				ar := new(Attr)
 				ar.space = space(a.Name.Space)
@@ -94,6 +93,7 @@ func LoadByStream(r io.Reader) (current *Element, err error) {
 				el.root = current.root
 			}
 			current = el
+			current.NamespaceURI = token.Name.Space
 		case xml.EndElement:
 			if current.parent != nil {
 				current = current.parent.(*Element)
