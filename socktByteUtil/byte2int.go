@@ -13,6 +13,7 @@ import (
 	"crypto/md5"
 	"encoding/binary"
 	"fmt"
+	"strconv"
 )
 
 //整形转换成字节
@@ -37,5 +38,12 @@ func BytesToInt(b []byte) int {
 func BytesTo16(bt []byte) string {
 	sign := md5.Sum(bt)
 	return fmt.Sprintf("%x", sign)
+}
 
+func Str2int(str string) int {
+	i, err := strconv.Atoi(str)
+	if err != nil {
+		return 0
+	}
+	return i
 }
