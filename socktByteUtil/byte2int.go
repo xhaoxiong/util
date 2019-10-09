@@ -10,7 +10,9 @@ package socktByteUtil
 
 import (
 	"bytes"
+	"crypto/md5"
 	"encoding/binary"
+	"fmt"
 )
 
 //整形转换成字节
@@ -30,4 +32,10 @@ func BytesToInt(b []byte) int {
 	binary.Read(bytesBuffer, binary.BigEndian, &x)
 
 	return int(x)
+}
+
+func BytesTo16(bt []byte) string {
+	sign := md5.Sum(bt)
+	return fmt.Sprintf("%x", sign)
+
 }
