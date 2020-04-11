@@ -1,4 +1,4 @@
-package windwos
+package util
 
 type WNDCLASSEX struct {
 	Size       uint32

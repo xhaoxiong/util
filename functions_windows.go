@@ -1,4 +1,4 @@
-package windows
+package util
 
 import (
 	"syscall"
