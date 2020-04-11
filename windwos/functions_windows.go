@@ -1,4 +1,4 @@
-package w32
+package windows
 
 import (
 	"syscall"
