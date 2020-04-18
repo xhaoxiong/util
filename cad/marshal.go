@@ -65,9 +65,9 @@ func GetCADSpaceString(key, val string) string {
 	build.WriteString(`("`)
 	build.WriteString(key)
 	build.WriteString(`" `)
-	build.WriteString(`"`)
+	build.WriteString(``)
 	build.WriteString(val)
-	build.WriteString(`")`)
+	build.WriteString(`)`)
 	return build.String()
 }
 
