@@ -60,7 +60,7 @@ func GetCADString(key, val string) string {
 	return build.String()
 }
 
-func GetCADSpaceString(key,val string)string  {
+func GetCADSpaceString(key, val string) string {
 	var build strings.Builder
 	build.WriteString(`("`)
 	build.WriteString(key)
@@ -71,10 +71,12 @@ func GetCADSpaceString(key,val string)string  {
 	return build.String()
 }
 
-func GetCADObject(obj string) string {
+func GetCADObject(objs ...string) string {
 	var build strings.Builder
 	build.WriteString(`(`)
-	build.WriteString(obj)
-	build.WriteString(`(`)
+	for _, v := range objs {
+		build.WriteString(v)
+	}
+	build.WriteString(`)`)
 	return build.String()
 }
