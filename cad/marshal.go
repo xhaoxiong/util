@@ -50,5 +50,12 @@ func Marshal(elem interface{}) (string, error) {
 }
 
 func GetCADString(key, val string) string {
-	return `("` + key + `".` + `"` + val + `")`
+	var build strings.Builder
+	build.WriteString(`("`)
+	build.WriteString(key)
+	build.WriteString(`".`)
+	build.WriteString(`"`)
+	build.WriteString(val)
+	build.WriteString(`")`)
+	return build.String()
 }
