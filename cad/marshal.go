@@ -53,7 +53,7 @@ func GetCADString(key, val string) string {
 	var build strings.Builder
 	build.WriteString(`("`)
 	build.WriteString(key)
-	build.WriteString(`".`)
+	build.WriteString(`" . `)
 	build.WriteString(`"`)
 	build.WriteString(val)
 	build.WriteString(`")`)
