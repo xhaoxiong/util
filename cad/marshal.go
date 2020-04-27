@@ -80,3 +80,12 @@ func GetCADObject(objs ...string) string {
 	build.WriteString(`)`)
 	return build.String()
 }
+
+func GetCADSlice2Str(objs ...string) string {
+	var build strings.Builder
+	for _, v := range objs {
+		build.WriteString(v)
+	}
+
+	return build.String()
+}
