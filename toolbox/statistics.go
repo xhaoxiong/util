@@ -30,7 +30,7 @@ type Statistics struct {
 	TotalTime         time.Duration
 }
 
-// URLMap contains several statistics struct to log different data
+// URLMap contains several statistics struct to logrus different data
 type URLMap struct {
 	lock        sync.RWMutex
 	LengthLimit int //limit the urlmap's length if it's equal to 0 there's no limit
