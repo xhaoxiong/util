@@ -10,7 +10,7 @@ import "github.com/xhaoxiong/util"
 //用于gorm的基础model
 type Model struct {
 	ID        uint           `gorm:"primary_key" json:"id"`
-	CreatedAt util.JSONTime  `json:"createdAt"`
+	CreatedAt util.JSONTime  `gorm:"autoCreateTime" json:"createdAt"`
 	UpdatedAt util.JSONTime  `json:"updatedAt"`
 	DeletedAt *util.JSONTime `sql:"index" json:"-"`
 }
