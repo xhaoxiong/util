@@ -19,14 +19,14 @@ const (
 	WithMaxAge        = "7*24h"
 	WithRotationTime  = "24h"
 	WithRotationCount = 5
-	LogName           = "log"
+	LogName           = "dayliy"
 )
 
 func InitLog() {
 	withMaxAge, _ := time.ParseDuration(WithMaxAge)
 	withRotationTime, _ := time.ParseDuration(WithRotationTime)
 	writer, err := rotatelogs.New(
-		LogName+".%Y%m%d%H%M",
+		LogName+"_%Y%m%d.log",
 		rotatelogs.WithLinkName(LogName),
 		rotatelogs.WithMaxAge(withMaxAge),
 		rotatelogs.WithRotationTime(withRotationTime),
