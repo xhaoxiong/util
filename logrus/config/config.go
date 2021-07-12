@@ -21,7 +21,6 @@ const (
 	WithRotationCount = 5
 	LogName           = "dayliy"
 )
-
 func InitLog() {
 	withMaxAge, _ := time.ParseDuration(WithMaxAge)
 	withRotationTime, _ := time.ParseDuration(WithRotationTime)
